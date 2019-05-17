@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.mexico.home.com/abelhzo/common/"
+	xmlns:tns="http://www.mexico.home.com/abelhzo/common/"
+	elementFormDefault="qualified">
+
+	<complexType name="In_CommonHeader">
+		<sequence>
+			<element name="Date" type="date" />
+			<element name="Time" type="time" />
+			<element name="IPAddress" minOccurs="0">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="64" />
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="ClientID" minOccurs="0">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="64" />
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="SessionID" minOccurs="0">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="64" />
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="OperationName">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="64" />
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="OperationVersion" minOccurs="0">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="10" />
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="Language">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="3" />
+						<enumeration value="SPA" />
+						<enumeration value="ENG" />
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="ClientPwd">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="20" />
+					</restriction>
+				</simpleType>
+			</element>
+		</sequence>
+	</complexType>
+
+</schema>

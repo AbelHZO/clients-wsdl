@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://www.mexico.home.com/departamento/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:depto="http://www.mexico.home.com/departamento/operaciones/" 
+	name="departamentos"
+	targetNamespace="http://www.mexico.home.com/departamento/">
+
+	<wsdl:import location="DepartamentoListarRq.xsd" namespace="http://www.mexico.home.com/departamento/operaciones/" />
+	<wsdl:import location="DepartamentoListarRs.xsd" namespace="http://www.mexico.home.com/departamento/operaciones/" />
+
+	<wsdl:types>
+	
+		<xsd:schema targetNamespace="http://www.mexico.home.com/departamento/operaciones/">
+			<xsd:element name="Departamento">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="DepartamentoListar">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element ref="depto:DepartamentoListarRq" minOccurs="1" />
+									<xsd:element ref="depto:DepartamentoListarRs" minOccurs="1" />
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+		
+	</wsdl:types>
+	
+	<wsdl:message name="DepartamentoListarRq">
+		<wsdl:part element="depto:DepartamentoListarRq" name="DepartamentoListarRq" />
+	</wsdl:message>
+	<wsdl:message name="DepartamentoListarRs">
+		<wsdl:part element="depto:DepartamentoListarRs" name="DepartamentoListarRs" />
+	</wsdl:message>
+	
+	<wsdl:portType name="DepartamentoService">
+		<wsdl:operation name="DepartamentoListar">
+			<wsdl:input message="tns:DepartamentoListarRq" />
+			<wsdl:output message="tns:DepartamentoListarRs" />
+		</wsdl:operation>
+	</wsdl:portType>
+	
+	<wsdl:binding name="departamentoListarSOAP" type="tns:DepartamentoService">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="DepartamentoListar">
+			<soap:operation soapAction="http://www.mexico.home.com/departamento/" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	
+	<wsdl:service name="DepartamentoServiceClient">
+		<wsdl:port binding="tns:departamentoListarSOAP" name="departamentoListarSOAP">
+			<soap:address location="http://127.0.0.1:8080/" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

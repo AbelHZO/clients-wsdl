@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		targetNamespace="http://www.mexico.home.com/empleado/operaciones/" 
+		xmlns:tns="http://www.mexico.home.com/empleado/operaciones/"
+		xmlns:common="http://www.mexico.home.com/abelhzo/common/" 
+		elementFormDefault="qualified">
+		
+		<import schemaLocation="../In_CommonHeader.xsd" namespace="http://www.mexico.home.com/abelhzo/common/" />
+		
+		<element name="In_EmpleadoBuscar">
+			<complexType>
+				<sequence>
+					<element name="idEmpleado" type="integer" minOccurs="0" />
+					<element name="nombre" type="string" minOccurs="0" />
+				</sequence>
+			</complexType>
+		</element>
+		
+		<element name="EmpleadoBuscarRq">
+			<complexType>
+				<sequence>
+					<element name="In_CommonHeader" type="common:In_CommonHeader" minOccurs="1" />
+					<element ref="tns:In_EmpleadoBuscar" minOccurs="1" />
+				</sequence>
+			</complexType>
+		</element>
+		
+</schema>

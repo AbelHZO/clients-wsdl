@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.mexico.home.com/abelhzo/common/"
+	xmlns:tns="http://www.mexico.home.com/abelhzo/common/"
+	elementFormDefault="qualified">
+
+	<complexType name="Out_CommonHeader">
+		<sequence>
+			<element name="Response">
+				<complexType>
+					<sequence>
+						<element name="Result">
+							<simpleType>
+								<restriction base="unsignedByte">
+									<totalDigits value="1" />
+								</restriction>
+							</simpleType>
+						</element>
+						<element name="TransaccionID">
+							<simpleType>
+								<restriction base="string">
+									<maxLength value="256" />
+								</restriction>
+							</simpleType>
+						</element>
+						<element name="Messages" maxOccurs="unbounded">
+							<complexType>
+								<sequence>
+									<element name="ResponseSystemCode"
+										minOccurs="0">
+										<simpleType>
+											<restriction base="string">
+												<maxLength value="120" />
+											</restriction>
+										</simpleType>
+									</element>
+									<element name="ResponseMessage" minOccurs="0">
+										<simpleType>
+											<restriction base="string" />
+										</simpleType>
+									</element>
+									<element name="ResponseType" minOccurs="0">
+										<simpleType>
+											<restriction base="string">
+												<maxLength value="1" />
+											</restriction>
+										</simpleType>
+									</element>
+									<element name="ResponseCategory" minOccurs="0">
+										<simpleType>
+											<restriction base="string">
+												<maxLength value="5" />
+											</restriction>
+										</simpleType>
+									</element>
+								</sequence>
+							</complexType>
+						</element>
+						<element name="NativeErrorCode" minOccurs="0">
+							<simpleType>
+								<restriction base="string">
+									<maxLength value="256" />
+								</restriction>
+							</simpleType>
+						</element>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="Date" type="date" />
+			<element name="Time" type="time" />
+			<element name="IPAddress" minOccurs="0">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="64" />
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="ClientID" minOccurs="0">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="64" />
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="SessionID" minOccurs="0">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="64" />
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="ResponseSystem" minOccurs="0">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="64" />
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="OperationName">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="35" />
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="OperationVersion" minOccurs="0">
+				<simpleType>
+					<restriction base="string">
+						<maxLength value="10" />
+					</restriction>
+				</simpleType>
+			</element>
+		</sequence>
+	</complexType>
+
+</schema>

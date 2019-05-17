@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions 
+xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+xmlns:tns="http://www.mexico.home.com/empleado/" 
+xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+name="empleados" 
+xmlns:employee="http://www.mexico.home.com/empleado/operaciones/"
+targetNamespace="http://www.mexico.home.com/empleado/">
+
+  <wsdl:import location="EmpleadoGuardarRq.xsd" namespace="http://www.mexico.home.com/empleado/operaciones/" />
+  <wsdl:import location="EmpleadoGuardarRs.xsd" namespace="http://www.mexico.home.com/empleado/operaciones/" />
+  <wsdl:import location="EmpleadoBuscarRq.xsd" namespace="http://www.mexico.home.com/empleado/operaciones/" />
+  <wsdl:import location="EmpleadoBuscarRs.xsd" namespace="http://www.mexico.home.com/empleado/operaciones/" /> 
+  <wsdl:import location="EmpleadoListarRq.xsd" namespace="http://www.mexico.home.com/empleado/operaciones/" />
+  <wsdl:import location="EmpleadoListarRs.xsd" namespace="http://www.mexico.home.com/empleado/operaciones/" />
+  <wsdl:import location="EmpleadoModificarRq.xsd" namespace="http://www.mexico.home.com/empleado/operaciones/" />
+  <wsdl:import location="EmpleadoModificarRs.xsd" namespace="http://www.mexico.home.com/empleado/operaciones/" /> 
+
+  <wsdl:types>
+ 
+    <xsd:schema targetNamespace="http://www.mexico.home.com/empleado/operaciones/">           
+      <xsd:element name="Empleado">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="EmpleadoGuardar">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element ref="employee:EmpleadoGuardarRq" minOccurs="1" />
+            			<xsd:element ref="employee:EmpleadoGuardarRs" minOccurs="1" />
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+            <xsd:element name="EmpleadoBuscar">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element ref="employee:EmpleadoBuscarRq" minOccurs="1" />
+            			<xsd:element ref="employee:EmpleadoBuscarRs" minOccurs="1" />
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+            <xsd:element name="EmpleadoListar">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element ref="employee:EmpleadoListarRq" minOccurs="1" />
+            			<xsd:element ref="employee:EmpleadoListarRs" minOccurs="1" />
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+            <xsd:element name="EmpleadoModificar">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element ref="employee:EmpleadoModificarRq" minOccurs="1" />
+            			<xsd:element ref="employee:EmpleadoModificarRs" minOccurs="1" />
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+    
+  </wsdl:types>  
+    
+  <wsdl:message name="EmpleadoGuardarRq">
+    <wsdl:part element="employee:EmpleadoGuardarRq" name="EmpleadoGuardarRq"/>
+  </wsdl:message>
+  <wsdl:message name="EmpleadoGuardarRs">
+    <wsdl:part element="employee:EmpleadoGuardarRs" name="EmpleadoGuardarRs"/>
+  </wsdl:message>
+  <wsdl:message name="EmpleadoBuscarRq">
+    <wsdl:part element="employee:EmpleadoBuscarRq" name="EmpleadoBuscarRq"/>
+  </wsdl:message>
+  <wsdl:message name="EmpleadoBuscarRs">
+    <wsdl:part element="employee:EmpleadoBuscarRs" name="EmpleadoBuscarRs"/>
+  </wsdl:message> 
+  <wsdl:message name="EmpleadoListarRq">
+  	<wsdl:part element="employee:EmpleadoListarRq" name="EmpleadoListarRq" />	
+  </wsdl:message>
+  <wsdl:message name="EmpleadoListarRs">
+  	<wsdl:part element="employee:EmpleadoListarRs" name="EmpleadoListarRs" />
+  </wsdl:message> 
+  <wsdl:message name="EmpleadoModificarRq">
+  	<wsdl:part element="employee:EmpleadoModificarRq" name="EmpleadoModificarRq" />
+  </wsdl:message> 
+  <wsdl:message name="EmpleadoModificarRs">
+  	<wsdl:part element="employee:EmpleadoModificarRs" name="EmpleadoModificarRs" />
+  </wsdl:message> 
+  
+  <wsdl:portType name="EmpleadoService">
+    <wsdl:operation name="EmpleadoGuardar">
+      	<wsdl:input message="tns:EmpleadoGuardarRq"/>
+      	<wsdl:output message="tns:EmpleadoGuardarRs"/>
+    </wsdl:operation>
+    <wsdl:operation name="EmpleadoBuscar">
+      	<wsdl:input message="tns:EmpleadoBuscarRq"/>
+      	<wsdl:output message="tns:EmpleadoBuscarRs"/>    
+    </wsdl:operation>
+    <wsdl:operation name="EmpleadoListar">
+    	<wsdl:input message="tns:EmpleadoListarRq" />
+    	<wsdl:output message="tns:EmpleadoListarRs" />
+    </wsdl:operation>  
+    <wsdl:operation name="EmpleadoModificar">
+    	<wsdl:input message="tns:EmpleadoModificarRq" />
+    	<wsdl:output message="tns:EmpleadoModificarRs" />
+    </wsdl:operation>       
+  </wsdl:portType>
+
+	<wsdl:binding name="empleadoGuardarSOAP" type="tns:EmpleadoService">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="EmpleadoGuardar">
+			<soap:operation soapAction="http://www.mexico.home.com/empleado/" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:binding name="empleadoBuscarSOAP" type="tns:EmpleadoService">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="EmpleadoBuscar">
+			<soap:operation soapAction="http://www.mexico.home.com/empleado/" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:binding name="empleadoListarSOAP" type="tns:EmpleadoService">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="EmpleadoListar">
+			<soap:operation soapAction="http://www.mexico.home.com/empleado/" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:binding name="empleadoModificarSOAP" type="tns:EmpleadoService">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="EmpleadoModificar">
+			<soap:operation soapAction="http://www.mexico.home.com/empleado/" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>	
+
+	<wsdl:service name="EmpleadoServiceClient">
+		<wsdl:port binding="tns:empleadoGuardarSOAP" name="empleadoGuardarSOAP">
+			<soap:address location="http://127.0.0.1:8080/" />
+		</wsdl:port>
+		<wsdl:port binding="tns:empleadoBuscarSOAP" name="empleadoBuscarSOAP">
+			<soap:address location="http://127.0.0.1:8080/" />
+		</wsdl:port>
+		<wsdl:port binding="tns:empleadoListarSOAP" name="empleadoListarSOAP">
+			<soap:address location="http://127.0.0.1:8080" />
+		</wsdl:port>
+		<wsdl:port binding="tns:empleadoModificarSOAP" name="eempleadoModificarSOAP">
+			<soap:address location="http://127.0.0.1:8080" />
+		</wsdl:port>		
+	</wsdl:service>
+  
+</wsdl:definitions>

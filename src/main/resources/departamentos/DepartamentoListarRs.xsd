@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		targetNamespace="http://www.mexico.home.com/departamento/operaciones/" 
+		xmlns:tns="http://www.mexico.home.com/departamento/operaciones/" 
+		xmlns:common="http://www.mexico.home.com/abelhzo/common/"
+		elementFormDefault="qualified">
+		
+		<import schemaLocation="../Out_CommonHeader.xsd" namespace="http://www.mexico.home.com/abelhzo/common/" />
+		
+		<element name="Out_DepartamentoListar">
+			<complexType>
+				<sequence>
+					<element name="departamento" maxOccurs="unbounded">
+						<complexType>
+							<sequence>
+								<element name="idDepto" type="int" minOccurs="1" />
+								<element name="departamento">
+									<simpleType>
+										<restriction base="string">
+											<maxLength value="30" />
+										</restriction>
+									</simpleType>
+								</element>
+							</sequence>
+						</complexType>
+					</element>
+				</sequence>
+			</complexType>
+		</element>
+		
+		<element name="DepartamentoListarRs">
+			<complexType>
+				<sequence>
+					<element name="Out_CommonHeader" type="common:Out_CommonHeader" minOccurs="1" />
+					<element ref="tns:Out_DepartamentoListar" minOccurs="1" />
+				</sequence>
+			</complexType>
+		</element>
+		
+</schema>

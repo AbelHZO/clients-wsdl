@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		targetNamespace="http://www.mexico.home.com/empleado/operaciones/" 
+		xmlns:tns="http://www.mexico.home.com/empleado/operaciones/" 
+		xmlns:common="http://www.mexico.home.com/abelhzo/common/"
+		elementFormDefault="qualified">
+
+		<import schemaLocation="../In_CommonHeader.xsd" namespace="http://www.mexico.home.com/abelhzo/common/" />
+		
+		<element name="In_EmpleadoGuardar">
+			<complexType>
+				<sequence>
+					<element name="Nombre" minOccurs="1">
+						<simpleType>
+							<restriction base="string">
+								<maxLength value="30" />
+								<pattern value="[A-Z][a-z]*" />
+							</restriction>
+						</simpleType>
+					</element>
+					<element name="Edad" type="integer" minOccurs="1" />
+					<element name="Telefono" maxOccurs="unbounded">
+						<simpleType>
+							<restriction base="string">
+								<maxLength value="10" />
+								<pattern value="[0-9]*" />
+							</restriction>
+						</simpleType>
+					</element>
+					<element name="Departamento" minOccurs="1">
+						<complexType>
+							<sequence>
+								<element name="IdDepto" type="integer" />
+<!-- 								<element name="Departamento"> -->
+<!-- 									<simpleType final="restriction"> -->
+<!-- 										<restriction base="string"> -->
+<!-- 											<enumeration value="SISTEMAS" /> -->
+<!-- 											<enumeration value="VENTAS" /> -->
+<!-- 											<enumeration value="MARKETING" /> -->
+<!-- 											<enumeration value="RH" /> -->
+<!-- 										</restriction> -->
+<!-- 									</simpleType> -->
+<!-- 								</element> -->
+							</sequence>
+						</complexType>
+					</element>
+				</sequence>
+			</complexType>
+		</element>
+		
+		<element name="EmpleadoGuardarRq">
+			<complexType>
+				<sequence>
+					<element name="In_CommonHeader" type="common:In_CommonHeader" minOccurs="1" />
+					<element ref="tns:In_EmpleadoGuardar" minOccurs="1" />
+				</sequence>
+			</complexType>
+		</element>
+		
+</schema>
